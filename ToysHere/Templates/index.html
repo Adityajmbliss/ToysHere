@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <body>
+    {% comment %} section 1 starting from here  {% endcomment %}
+      <section class="first-sec">
+        <div class="sec-cont">
+          <div class="sec-1-row row">
+            <div class="sec-1-col col">
+              <div class="slider-sec">
+                {% if slider %}
+                <div class='slider-img'>
+                  {% for img in slider %}
+                  <img src="/media/{{img.Banner_img}}" alt="{{img.Alt_txt}}">
+                  {% endfor %}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+    {% comment %} section - 1 ends here  {% endcomment %}
+
+    {% comment %} section - 2 starts here {% endcomment %}
+    <section class="second-sec">
+      <div class="sec-cont">
+          <div class="sec-2-row row">
+            <div class="sec-2-col col">
+              <div class="brand-sec">
+                {% if brand %}
+                <div class="brand-img">
+                  {% for brands in brand %}
+                  <img src="/media/{{brands.Brand_img}}" alt="{{brands.Brand_Name}}">
+                  {% endfor %}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+    {% comment %} section - 2 ends here {% endcomment %}
+  </body>
+</html>
+{% endblock %}
