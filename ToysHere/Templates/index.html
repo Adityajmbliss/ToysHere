@@ -1,6 +1,4 @@
-{% extends "base.html" %}
-{% load static %} 
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,48 +8,132 @@
     <title>Home</title>
   </head>
   <body>
-    {% comment %} section 1 starting from here  {% endcomment %}
-      <section class="first-sec">
-        <div class="sec-cont">
-          <div class="sec-1-row row">
-            <div class="sec-1-col col">
-              <div class="slider-sec">
-                {% if slider %}
-                <div class='slider-img'>
-                  {% for img in slider %}
-                  <img src="/media/{{img.Banner_img}}" alt="{{img.Alt_txt}}">
-                  {% endfor %}
-                </div>
-                {% endif %}
+    {% comment %} section 1 starting from here {% endcomment %}
+    <section class="first-sec">
+      <div class="sec-cont cont">
+        <div class="sec-1-row row">
+          <div class="sec-1-col col">
+            <div class="slider-sec">
+              {% if slider %}
+              <div class="slider-img">
+                {% for img in slider %}
+                <img src="/media/{{img.Banner_img}}" alt="{{img.Alt_txt}}" />
+                {% endfor %}
               </div>
+              {% endif %}
             </div>
           </div>
         </div>
-      </section>
-
-
-
-    {% comment %} section - 1 ends here  {% endcomment %}
-
-    {% comment %} section - 2 starts here {% endcomment %}
-    <section class="second-sec">
-      <div class="sec-cont">
-          <div class="sec-2-row row">
-            <div class="sec-2-col col">
-              <div class="brand-sec">
-                {% if brand %}
-                <div class="brand-img">
-                  {% for brands in brand %}
-                  <img src="/media/{{brands.Brand_img}}" alt="{{brands.Brand_Name}}">
-                  {% endfor %}
-                </div>
-                {% endif %}
-              </div>
-            </div>
-          </div>
       </div>
     </section>
-    {% comment %} section - 2 ends here {% endcomment %}
+
+    {% comment %} section - 1 ends here {% endcomment %} {% comment %} section
+    -2 starts here {% endcomment %}
+    <section class="second-sec">
+      <div class="sec-cont cont">
+        <div class="sec-2-row row">
+          <div class="sec-2-col col">
+            <div class="cat-sec">
+              <h2>Categories</h2>
+              {% if category %}
+              <div class="category-content">
+                {% for cat in category %}
+                <div class="category">
+                  <img src="/media/{{cat.Cat_img}}" alt="{{cat.Cat_Name}}" />
+                  <h4>{{cat.Cat_Name}}</h4>
+                </div>
+                {% endfor %}
+              </div>
+                <div class="view-more">
+                  <a href="/category">
+                    <button type="button" class="btn">
+                      more
+                    </button>
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% comment %} section - 2 ends here {% endcomment %} {% comment %} section
+    -3 starts here {% endcomment %}
+    <section class="third-sec">
+      <div class="sec-cont cont">
+        <div class="sec-3-row row">
+          <div class="sec-3-col col">
+            <div class="brand-sec">
+              <div class="brand-title">
+                <h2>our collaboration with</h2>
+              </div>
+              {% if brand %}
+              <div class="brand-img">
+                {% for brands in brand %}
+                <img
+                  src="/media/{{brands.Brand_img}}"
+                  alt="{{brands.Brand_Name}}"
+                />
+                {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% comment %} section - 3 ends here {% endcomment %} {% comment %} section -
+    4 starts here {% endcomment %}
+    <section class="sec-4">
+      <div class="sec-cont cont">
+        <div class="sec-3-row row">
+          <div class="sec-3-col col">
+            <div class="products-sec">
+              <div class="product-heading">
+                <h2> Latest Products </h2>
+              </div>
+              {% if products %}
+              <div class="products-content">
+                {% for product in products %}
+                <div class="product">
+                  <a href="{{ product.id }}/" target="_blank">
+                    <div class="product-img">
+                      <img
+                        src="/media/{{ product.Product_img }}"
+                        alt="{{ product.Product_title }}"
+                      />
+                    </div>
+                    <div class="product-title">
+                      <h2>{{ product.Product_title |slice:":50" }}..</h2>
+                    </div>
+                  </a>
+                  <div class="product-redirection">
+                    <div class="buy-now produt-button">
+                      <a href="javascript:void(0)"
+                        ><button type="button" class="buy-now-btn">
+                          Buy Now
+                        </button></a
+                      >
+                    </div>
+                    <div class="add-cart produt-button">
+                      <a href="javascript:void(0)"
+                        ><button type="button" class="add-cart-btn">
+                          Add to Cart
+                        </button></a
+                      >
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% comment %} section - 4 ends here {% endcomment %}
   </body>
 </html>
 {% endblock %}

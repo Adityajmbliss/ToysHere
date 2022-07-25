@@ -5,7 +5,7 @@ from .models import *
 
 # category model
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id','Cat_Name','Cat_img')
+    list_display = ('id','Cat_Name','image_tag')
 
 admin.site.register(Category,CategoryAdmin)
 
@@ -18,7 +18,7 @@ admin.site.register(Brand,BrandAdmin)
 # color model
 
 class ColorAdmin(admin.ModelAdmin):
-    list_display = ('id','Color_Name','Color_code')
+    list_display = ('id','Color_Name','color_bg')
 
 admin.site.register(Color,ColorAdmin)
 

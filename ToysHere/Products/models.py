@@ -1,6 +1,10 @@
 from audioop import reverse
 from pyexpat import model
+from typing import OrderedDict
 from django.db import models
+from django.utils.html import mark_safe
+
+
 
 # Create your models here.
 
@@ -23,16 +27,20 @@ class HomepageBanner(models.Model):
 # creating category models
 
 class Category(models.Model):
-    Cat_Name = models.CharField(max_length=100)
+    Cat_Name = models.CharField(max_length=250)
     Cat_img = models.ImageField(upload_to='Category_images/')
 
     class Meta:
         verbose_name = ("Category")
         verbose_name_plural = ("Categories")
+        ordering = ['id']
 
     def __str__(self):
         return self.Cat_Name
-    
+
+    def image_tag(self):
+        return mark_safe('<img src="%s" width="50" height="50" />' %(self.Cat_img.url))
+
     def get_absolute_url(self):
         return reverse("Category_detail", kwargs={"pk": self.pk})
 
@@ -64,10 +72,14 @@ class Color(models.Model):
     class Meta:
         verbose_name = ("Color")
         verbose_name_plural = ("Colors")
+        ordering = ["id"]
 
     def __str__(self):
         return self.Color_Name
-
+    
+    def color_bg(self):
+        return mark_safe('<div style="height:30px; width:30px; background-color: %s;"></div>' % (self.Color_code))
+        
     def get_absolute_url(self):
         return reverse("Color_detail", kwargs={"pk": self.pk})
 
@@ -80,6 +92,7 @@ class Size(models.Model):
     class Meta:
         verbose_name = ("Size")
         verbose_name_plural = ("Sizes")
+        ordering =["id"]
 
     def __str__(self):
         return self.Size_Type
@@ -103,6 +116,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = ("Product")
         verbose_name_plural = ("Products")
+        ordering = ["id"]
 
     def __str__(self):
         return self.Product_title

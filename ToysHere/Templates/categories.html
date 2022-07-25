@@ -14,11 +14,19 @@
       <section class="cat-sec">
         <div class="cat-cont">
           <div class="cat-1-row">
-            <div class="sec-1-col">
+            <div class="sec-cat-col">
                 {% if categories %}
-                <div class="categories">
-                    {}
-                </div>
+                    {% for cat in categories %}
+                    <div class="categories">
+                      <div class ="cate-img">
+                          <img src="/media/{{cat.Cat_img}}" alt="{{cat.Cat_Name}}" title="{{cat.Cat_Name}}" />
+                      </div>
+                      <div class ="cat-name">
+                        <h4>{{cat.Cat_Name}}</h4>
+                      </div>
+                    </div>
+                    {% endfor %}
+                
                 {% endif %}
             </div>
           </div>

@@ -1,4 +1,4 @@
-// js for slider
+// js for main slider
 $(document).ready(function () {
   $(".slider-img").slick({
     dots: false,
@@ -6,6 +6,5 @@ $(document).ready(function () {
     speed: 300,
     slidesToShow: 1,
   });
+
 });
-
-
